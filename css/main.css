@@ -1,0 +1,21 @@
+/* ============================================
+   AETRAM PLATFORM - Main Stylesheet
+   Central import hub for all CSS
+   ============================================ */
+
+/* Base Layer - Foundation */
+@import url('base/variables.css');
+@import url('base/reset.css');
+@import url('base/typography.css');
+@import url('base/animations.css');
+@import url('base/utilities.css');
+
+/* Note: global.css in base/ contains original styles for backward compatibility */
+@import url('base/global.css');
+
+/* Page-specific styles */
+@import url('pages/auth.css');
+@import url('pages/admin-dashboard.css');
+@import url('pages/candidate.css');
+@import url('pages/create-assessment.css');
+@import url('pages/analytics.css');
