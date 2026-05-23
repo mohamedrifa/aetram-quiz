@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Exports | Aetram Group</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/admin-dashboard.css">
+  <link rel="stylesheet" href="css/analytics.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar open" style="position:fixed">
+      <div class="sidebar-header">
+        <a href="index.html" class="nav-logo"><div class="nav-logo-icon">AE</div><span class="nav-logo-text">AETRAM <span>GROUP</span></span></a>
+        <p class="sidebar-title">Reports</p>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span> Management</a></li>
+          <li><a href="analytics-dashboard.html" class="sidebar-link"><span class="icon">📈</span> Analytics</a></li>
+          <li><button class="sidebar-link active"><span class="icon">📁</span> Reports & Exports</button></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="admin-main" style="margin-left:var(--sidebar-width)">
+      <header class="admin-topbar">
+        <h2 style="font-size:1.1rem">Reports & Exports</h2>
+        <a href="admin-dashboard.html" class="btn btn-ghost btn-sm">← Dashboard</a>
+      </header>
+
+      <main class="analytics-content">
+        <div class="filter-panel">
+          <select class="filter-select" id="report-period">
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+          <select class="filter-select" id="report-type">
+            <option value="performance">Candidate Performance</option>
+            <option value="assessment">Assessment Analytics</option>
+            <option value="survey">Survey Analytics</option>
+            <option value="leaderboard">Leaderboard History</option>
+          </select>
+          <input type="date" class="filter-input" id="report-from">
+          <input type="date" class="filter-input" id="report-to">
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px">
+          <div class="glass-card" style="padding:28px">
+            <h3 style="margin-bottom:12px;color:var(--gold-primary)">📄 PDF Report</h3>
+            <p class="text-muted" style="font-size:0.9rem;margin-bottom:20px">Generate formatted executive PDF with charts and summaries.</p>
+            <button class="btn btn-gold btn-ripple export-btn" data-format="pdf">Download PDF</button>
+          </div>
+          <div class="glass-card" style="padding:28px">
+            <h3 style="margin-bottom:12px;color:var(--gold-primary)">📗 Excel Report</h3>
+            <p class="text-muted" style="font-size:0.9rem;margin-bottom:20px">Export detailed spreadsheet with all metrics and raw data.</p>
+            <button class="btn btn-gold btn-ripple export-btn" data-format="excel">Download Excel</button>
+          </div>
+          <div class="glass-card" style="padding:28px">
+            <h3 style="margin-bottom:12px;color:var(--gold-primary)">📋 CSV Export</h3>
+            <p class="text-muted" style="font-size:0.9rem;margin-bottom:20px">Raw data export for BI tools and custom analysis.</p>
+            <button class="btn btn-outline export-btn" data-format="csv">Download CSV</button>
+          </div>
+        </div>
+
+        <div class="glass-card" style="padding:28px;margin-top:28px">
+          <h3 style="margin-bottom:20px">Recent Reports</h3>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr><th>Report Name</th><th>Type</th><th>Period</th><th>Generated</th><th>Format</th><th>Action</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Weekly Performance Summary</td><td>Performance</td><td>Weekly</td><td>May 19, 2026</td><td>PDF</td><td><button class="btn btn-ghost btn-sm">Download</button></td></tr>
+                <tr><td>Assessment Analytics Q2</td><td>Assessment</td><td>Monthly</td><td>May 15, 2026</td><td>Excel</td><td><button class="btn btn-ghost btn-sm">Download</button></td></tr>
+                <tr><td>Survey Satisfaction Report</td><td>Survey</td><td>Monthly</td><td>May 10, 2026</td><td>CSV</td><td><button class="btn btn-ghost btn-sm">Download</button></td></tr>
+                <tr><td>Leaderboard History</td><td>Leaderboard</td><td>Yearly</td><td>May 1, 2026</td><td>PDF</td><td><button class="btn btn-ghost btn-sm">Download</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/global.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.export-btn').on('click', function () {
+        var format = $(this).data('format');
+        var type = $('#report-type').val();
+        var period = $('#report-period').val();
+        AetramLoader.show();
+        setTimeout(function () {
+          AetramLoader.hide();
+          AetramToast.success(period.charAt(0).toUpperCase() + period.slice(1) + ' ' + type + ' report (' + format.toUpperCase() + ') — connect export API');
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>

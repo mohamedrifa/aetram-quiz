@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Aetram Group</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon">AE</div>
+          <span class="nav-logo-text">AETRAM <span>GROUP</span></span>
+        </a>
+        <p class="sidebar-title">Admin Management</p>
+      </div>
+      <nav class="sidebar-nav" aria-label="Admin modules">
+        <ul>
+          <li><button class="sidebar-link active" data-module="creators"><span class="icon">👥</span> Creator Management</button></li>
+          <li><button class="sidebar-link" data-module="candidates"><span class="icon">👤</span> Candidate Management</button></li>
+          <li><button class="sidebar-link" data-module="assessments"><span class="icon">📋</span> Assessment Management</button></li>
+          <li><button class="sidebar-link" data-module="analytics" data-href="analytics-dashboard.html"><span class="icon">📊</span> Analytics Dashboard</button></li>
+          <li><button class="sidebar-link" data-module="reports" data-href="reports.html"><span class="icon">📁</span> Reports & Exports</button></li>
+          <li><button class="sidebar-link" data-module="notifications"><span class="icon">🔔</span> Notification Center</button></li>
+          <li><button class="sidebar-link" data-module="settings"><span class="icon">⚙</span> Settings</button></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+          <div class="search-bar">
+            <span aria-hidden="true">🔍</span>
+            <input type="search" placeholder="Search dashboard..." id="global-search" aria-label="Global search">
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="topbar-icon-btn" title="Notifications" aria-label="Notifications"><span>🔔</span><span class="badge"></span></button>
+          <button class="topbar-icon-btn" title="Settings" aria-label="Settings">⚙</button>
+          <div class="admin-avatar" title="Admin Profile">AD</div>
+          <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <!-- CREATOR MANAGEMENT -->
+        <section class="module-panel active" id="module-creators">
+          <div class="module-header">
+            <div>
+              <h1>Creator Management</h1>
+              <p>Manage assessment creators and content specialists</p>
+            </div>
+            <button class="btn btn-gold btn-ripple" id="add-creator-btn">+ Add Creator</button>
+          </div>
+          <div class="filter-bar" id="creator-filters">
+            <input type="text" class="filter-input" placeholder="Search by name..." data-filter="name">
+            <input type="text" class="filter-input" placeholder="Search by company..." data-filter="company">
+            <input type="text" class="filter-input" placeholder="Search by designation..." data-filter="designation">
+            <select class="filter-select" data-filter="status">
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <select class="filter-select" data-filter="experience">
+              <option value="">Experience</option>
+              <option value="5">5+ years</option>
+              <option value="8">8+ years</option>
+              <option value="10">10+ years</option>
+            </select>
+            <div class="sort-controls">
+              <button class="sort-btn active" data-sort="name" data-dir="asc">A-Z</button>
+              <button class="sort-btn" data-sort="name" data-dir="desc">Z-A</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="creators-table">
+              <thead>
+                <tr>
+                  <th data-sort="name">Creator Name <span class="sort-arrow">↕</span></th>
+                  <th data-sort="email">Email ID</th>
+                  <th>Mobile</th>
+                  <th data-sort="company">Company</th>
+                  <th>Specialization</th>
+                  <th data-sort="designation">Designation</th>
+                  <th data-sort="experience">Experience</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="creators-tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination-bar" data-table="creators"></div>
+        </section>
+
+        <!-- CANDIDATE MANAGEMENT -->
+        <section class="module-panel" id="module-candidates">
+          <div class="module-header">
+            <div>
+              <h1>Candidate Management</h1>
+              <p>Track candidates and assessment assignments</p>
+            </div>
+            <button class="btn btn-gold btn-ripple" id="add-candidate-btn">+ Add Candidate</button>
+          </div>
+          <div class="filter-bar" id="candidate-filters">
+            <input type="text" class="filter-input" placeholder="Search candidate..." data-filter="name">
+            <input type="text" class="filter-input" placeholder="Search assessment..." data-filter="assessment">
+            <select class="filter-select" data-filter="domain">
+              <option value="">All Domains</option>
+              <option value="Technology">Technology</option>
+              <option value="Finance">Finance</option>
+              <option value="HR">HR</option>
+              <option value="Operations">Operations</option>
+            </select>
+            <select class="filter-select" data-filter="status">
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <div class="sort-controls">
+              <button class="sort-btn active" data-sort="name" data-dir="asc">A-Z</button>
+              <button class="sort-btn" data-sort="name" data-dir="desc">Z-A</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="candidates-table">
+              <thead>
+                <tr>
+                  <th data-sort="name">Candidate Name</th>
+                  <th data-sort="email">Email ID</th>
+                  <th>Mobile</th>
+                  <th data-sort="domain">Domain</th>
+                  <th data-sort="assessment">Assessment</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="candidates-tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination-bar" data-table="candidates"></div>
+        </section>
+
+        <!-- ASSESSMENT MANAGEMENT -->
+        <section class="module-panel" id="module-assessments">
+          <div class="module-header">
+            <div>
+              <h1>Assessment Management</h1>
+              <p>Create and manage enterprise assessments</p>
+            </div>
+            <a href="create-assessment.html" class="btn btn-gold btn-ripple">+ Create Assessment</a>
+          </div>
+          <div class="filter-bar" id="assessment-filters">
+            <input type="text" class="filter-input" placeholder="Search title..." data-filter="title">
+            <select class="filter-select" data-filter="category">
+              <option value="">All Categories</option>
+              <option value="Technical">Technical</option>
+              <option value="Finance">Finance</option>
+              <option value="HR">HR</option>
+              <option value="Behavioral">Behavioral</option>
+            </select>
+            <select class="filter-select" data-filter="type">
+              <option value="">All Types</option>
+              <option value="Quiz">Quiz</option>
+              <option value="Survey">Survey</option>
+            </select>
+            <select class="filter-select" data-filter="status">
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="assessments-table">
+              <thead>
+                <tr>
+                  <th data-sort="title">Assessment Title</th>
+                  <th data-sort="category">Category</th>
+                  <th data-sort="type">Type</th>
+                  <th data-sort="questions">Questions</th>
+                  <th data-sort="duration">Duration</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="assessments-tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination-bar" data-table="assessments"></div>
+        </section>
+
+        <!-- Placeholder modules -->
+        <section class="module-panel" id="module-notifications">
+          <div class="module-header"><div><h1>Notification Center</h1><p>Live activity and proctoring alerts</p></div></div>
+          <div class="glass-card" style="padding:32px"><p class="text-muted">Real-time notifications via SignalR — connect backend hub.</p></div>
+        </section>
+        <section class="module-panel" id="module-settings">
+          <div class="module-header"><div><h1>Settings</h1><p>Platform configuration</p></div></div>
+          <div class="glass-card" style="padding:32px"><p class="text-muted">Enterprise settings panel — configure in production.</p></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Creator Modal -->
+  <div class="modal-overlay" id="creator-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="creator-modal-title">Add Creator</h3>
+        <button class="modal-close" data-close="creator-modal" aria-label="Close">&times;</button>
+      </div>
+      <form id="creator-form">
+        <div class="modal-form-grid">
+          <div class="form-group"><input type="text" class="form-input" id="cr-name" placeholder=" " required><label class="form-label">Name</label></div>
+          <div class="form-group"><input type="email" class="form-input" id="cr-email" placeholder=" " required><label class="form-label">Email</label></div>
+          <div class="form-group"><input type="tel" class="form-input" id="cr-mobile" placeholder=" " required><label class="form-label">Mobile</label></div>
+          <div class="form-group"><input type="text" class="form-input" id="cr-company" placeholder=" " required><label class="form-label">Company</label></div>
+          <div class="form-group"><input type="text" class="form-input" id="cr-spec" placeholder=" " required><label class="form-label">Specialization</label></div>
+          <div class="form-group"><input type="text" class="form-input" id="cr-designation" placeholder=" " required><label class="form-label">Designation</label></div>
+          <div class="form-group"><input type="text" class="form-input" id="cr-exp" placeholder=" " required><label class="form-label">Experience</label></div>
+          <div class="form-group full">
+            <label class="remember-me"><input type="checkbox" id="cr-status" checked> Active Status</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold btn-full" style="margin-top:20px">Save Creator</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Candidate Modal -->
+  <div class="modal-overlay" id="candidate-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="candidate-modal-title">Add Candidate</h3>
+        <button class="modal-close" data-close="candidate-modal" aria-label="Close">&times;</button>
+      </div>
+      <form id="candidate-form">
+        <div class="modal-form-grid">
+          <div class="form-group"><input type="text" class="form-input" id="ca-name" placeholder=" " required><label class="form-label">Candidate Name</label></div>
+          <div class="form-group"><input type="email" class="form-input" id="ca-email" placeholder=" " required><label class="form-label">Email</label></div>
+          <div class="form-group"><input type="tel" class="form-input" id="ca-mobile" placeholder=" " required><label class="form-label">Mobile</label></div>
+          <div class="form-group full"><input type="text" class="form-input" id="ca-assessment" placeholder=" " required><label class="form-label">Assigned Assessment</label></div>
+          <div class="form-group"><input type="text" class="form-input" id="ca-domain" placeholder=" " required><label class="form-label">Domain</label></div>
+          <div class="form-group full"><label class="remember-me"><input type="checkbox" id="ca-status" checked> Active</label></div>
+        </div>
+        <button type="submit" class="btn btn-gold btn-full" style="margin-top:20px">Save Candidate</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Modal -->
+  <div class="modal-overlay" id="view-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Record Details</h3>
+        <button class="modal-close" data-close="view-modal" aria-label="Close">&times;</button>
+      </div>
+      <div id="view-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Delete Confirm -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal" style="max-width:400px">
+      <div class="modal-header"><h3>Confirm Delete</h3><button class="modal-close" data-close="delete-modal">&times;</button></div>
+      <p style="margin-bottom:24px;color:var(--text-secondary)">Are you sure you want to delete this record? This action cannot be undone.</p>
+      <div style="display:flex;gap:12px">
+        <button class="btn btn-danger btn-ripple" id="confirm-delete">Delete</button>
+        <button class="btn btn-ghost" data-close="delete-modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+</body>
+</html>
