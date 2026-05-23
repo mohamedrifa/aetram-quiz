@@ -233,7 +233,7 @@
     /* Logout */
     $('#logout-btn').on('click', function () {
       AetramSession.clear();
-      window.location.href = 'index.html';
+      window.location.href = '../../index.html';
     });
 
     /* Filters */

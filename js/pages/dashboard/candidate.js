@@ -371,7 +371,7 @@ window.CandidateApp = (function ($) {
             if (c <= 0) {
               clearInterval(iv);
               AetramSession.clear();
-              window.location.href = 'index.html';
+              window.location.href = "../../index.html";
             }
           }, 1000);
         }, 1000);

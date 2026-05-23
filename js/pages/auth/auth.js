@@ -210,7 +210,7 @@
       AetramSession.set('user', { role: 'candidate', email: $('#c-login-email').val() });
       AetramToast.success('Welcome! Redirecting to assessment...');
       setTimeout(function () {
-        window.location.href = 'candidate-instructions.html';
+        window.location.href = '../candidate/candidate-instructions.html';
       }, 800);
     }, 1200);
   });
@@ -224,7 +224,7 @@
       AetramSession.set('user', { role: 'admin', email: $('#a-login-email').val() });
       AetramToast.success('Admin access granted. Loading dashboard...');
       setTimeout(function () {
-        window.location.href = 'admin-dashboard.html';
+        window.location.href = '../admin/admin-dashboard.html';
       }, 800);
     }, 1200);
   });

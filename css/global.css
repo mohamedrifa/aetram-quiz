@@ -171,41 +171,42 @@ img { max-width: 100%; height: auto; }
 
 .form-input {
   width: 100%;
-  padding: 16px 16px 8px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  transition: var(--transition);
+  padding: 24px 16px 10px;
+  background: #111113;
+  border: 1px solid rgba(217, 179, 90, 0.5);
+  border-radius: 18px;
+  color: white;
+  font-size: 1rem;
   outline: none;
+  transition: 0.3s ease;
 }
 
 .form-input:focus {
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 0 3px var(--gold-glow), 0 0 20px rgba(217, 179, 90, 0.1);
-  background: rgba(217, 179, 90, 0.03);
+  border-color: #d9b35a;
+  box-shadow: 0 0 12px rgba(217,179,90,0.15);
 }
 
+/* LABEL */
 .form-label {
   position: absolute;
-  left: 16px;
+  left: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  padding: 0 8px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
   pointer-events: none;
-  transition: var(--transition);
+  transition: 0.25s ease;
+  background: #111113;
 }
 
+/* FLOAT TO BORDER */
 .form-input:focus + .form-label,
-.form-input:not(:placeholder-shown) + .form-label,
-.form-input.has-value + .form-label {
-  top: 10px;
-  font-size: 0.7rem;
-  color: var(--gold-primary);
-  transform: translateY(0);
+.form-input:not(:placeholder-shown) + .form-label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 0.78rem;
+  color: #d9b35a;
 }
 
 /* Date, Time, Select inputs neat structure & absolute reusability */
