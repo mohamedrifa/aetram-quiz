@@ -135,8 +135,9 @@
       html += '<tr data-id="' + r.id + '">' +
         '<td>' + r.name + '</td><td>' + r.email + '</td><td>' + r.mobile + '</td>' +
         '<td>' + r.company + '</td><td>' + r.specialization + '</td><td>' + r.designation + '</td>' +
-        '<td>' + r.experience + '</td><td>' + statusToggle(r.id, 'creators', r.status) + '</td>' +
-        '<td>' + actionBtns(r.id, 'creators') + '</td></tr>';
+        '<td>' + r.experience + '</td><td>' + 
+        // statusToggle(r.id, 'creators', r.status) + '</td><td>' + 
+        actionBtns(r.id, 'creators') + '</td></tr>';
     });
     $('#creators-tbody').html(html || '<tr><td colspan="9" style="text-align:center;padding:40px">No records found</td></tr>');
     renderPagination($('[data-table="creators"].pagination-bar'), 'creators', filtered.length);
@@ -149,9 +150,9 @@
     p.rows.forEach(function (r) {
       html += '<tr data-id="' + r.id + '">' +
         '<td>' + r.name + '</td><td>' + r.email + '</td><td>' + r.mobile + '</td>' +
-        '<td>' + r.domain + '</td><td>' + r.assessment + '</td>' +
-        '<td>' + statusToggle(r.id, 'candidates', r.status) + '</td>' +
-        '<td>' + actionBtns(r.id, 'candidates') + '</td></tr>';
+        '<td>' + r.domain + '</td><td>' + r.assessment + '</td><td>' + 
+        // statusToggle(r.id, 'candidates', r.status) + '</td><td>' + 
+        actionBtns(r.id, 'candidates') + '</td></tr>';
     });
     $('#candidates-tbody').html(html || '<tr><td colspan="7" style="text-align:center;padding:40px">No records found</td></tr>');
     renderPagination($('[data-table="candidates"].pagination-bar'), 'candidates', filtered.length);
@@ -164,9 +165,9 @@
     p.rows.forEach(function (r) {
       html += '<tr data-id="' + r.id + '">' +
         '<td>' + r.title + '</td><td>' + r.category + '</td><td>' + r.type + '</td>' +
-        '<td>' + r.questions + '</td><td>' + r.duration + '</td>' +
-        '<td>' + statusToggle(r.id, 'assessments', r.status) + '</td>' +
-        '<td>' + actionBtns(r.id, 'assessments') + '</td></tr>';
+        '<td>' + r.questions + '</td><td>' + r.duration + '</td><td>' + 
+        // statusToggle(r.id, 'assessments', r.status) + '</td><td>' + 
+        actionBtns(r.id, 'assessments') + '</td></tr>';
     });
     $('#assessments-tbody').html(html || '<tr><td colspan="7" style="text-align:center;padding:40px">No records found</td></tr>');
     renderPagination($('[data-table="assessments"].pagination-bar'), 'assessments', filtered.length);
